@@ -34,28 +34,13 @@ List of other features outside of the MVPs scope
 Notifications
 - send an email throw the app(mailchimp?)
 
-## Models
+## My persona
+Age: not relevant
+has many books, likes to borrow and borrow books He has friends who do 
+this same practice, and there is an  unofficial book exchange network.
+The user does not know or doesnt remember who has his books, or who 
+loaned him/her some books.
+The user doesnt know what  books he has checked out. 
+The user doesnt know which books he can borrow from his friends.
+The user doesnt know when their books will be returned
 
-User model
-- username: String
-- password: String
-- image: String
-- description: String
-- books: Array
-```
-```
-Book model
-- title: String
-- description: String
-- author: String
-- genre: enum
-- Rating: Number
-- borrowed: Boolean
-```
-```
-Network model
-- network-users: Object ID
-- 
-
-```
-```
