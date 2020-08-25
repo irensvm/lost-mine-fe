@@ -18,7 +18,7 @@ An app that allows you to have control over the books that are lent and borrowed
 - **login** - As a user I want to be able to log in on the webpage so that I can get back to my account
 - **logout** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
 - **books list** - As a user I want to see all the books I borrowed (library)
-- **books create** - As a user I want I want create a book and add the details (i have it or i borrow to somene).
+- **books create** - As a user I want I want create a book and add the details (i have it or i borrow to someone).
 - **borrowed books details** - As a user I want to see the book detail: who has it? since when?
 - **book come back** - As a user I want to be able to request one of my books back
 - **ask for a book** - As a user I want to be able to borrow a book from my colleagues' library
