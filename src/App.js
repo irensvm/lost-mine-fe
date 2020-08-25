@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import OpenMenu from './components/OpenMenu'
-import BookCard from './components/BookCard'
-import GoogleBtn from './components/GoogleBtn'
+//import OpenMenu from './components/OpenMenu'
+//import BookCard from './components/BookCard'
+import Home from './components/Home'
+
+
 
 
 
@@ -10,9 +12,8 @@ export default class App extends Component {
   render() {
     return (
       <div>
-      <GoogleBtn></GoogleBtn>
-      <OpenMenu></OpenMenu>
-      <BookCard></BookCard>
+      <Home></Home>
+      
         
       </div>
     )
