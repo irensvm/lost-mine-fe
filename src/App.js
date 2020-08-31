@@ -5,25 +5,51 @@ import Home from './components/Home';
 import Logout from './components/auth/Logout';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
-import Navbar from './components/Navbar';
+import Profile from './components/Profile';
+import AddBook from './components/book/AddBook';
+
+
 import { Switch, Route } from 'react-router-dom';
 
 
 
 
 export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loggedInUser: JSON.parse(localStorage.getItem('loggedInUser')) || null,
+    }
+  }
+
+
+  getTheUser = (userObject) => {
+    this.setState({
+      loggedInUser: userObject
+    }, () => {
+      localStorage.setItem('loggedInUser', JSON.stringify(this.state.loggedInUser))
+    })
+  }
   render() {
     return (
       <div>
-        <Home></Home>
-        <Route path="/signup" render={props => <Signup {...props} callback={this.getTheUser} />} />
-        <Route path="/login" render={props => <Login {...props} callback={this.getTheUser} />} />
+        <Switch>
+          <Route exact path="/" render={() => <Home />} />
+          <Route path="/books" render={props => <AddBook {...props}  />} />
 
-        <Route
-          exact
-          path="/logout"
-          render={(props) => <Logout {...props} callback={this.getTheUser} />}
-        />
+          
+          <Route path="/signup" render={props => <Signup {...props} callback={this.getTheUser} />} />
+          <Route path="/login" render={props => <Login {...props} callback={this.getTheUser} />} />
+
+          <Route
+            exact
+            path="/logout"
+            render={(props) => <Logout {...props} callback={this.getTheUser} />}
+          />
+          <Route path="/profile" render={props => <Profile {...props} user={this.state.loggedInUser} getUser={this.getTheUser} />} />
+
+        </Switch>
+
 
       </div>
     )

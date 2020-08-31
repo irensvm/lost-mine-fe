@@ -27,6 +27,7 @@ class GoogleBtn extends Component {
         accessToken: response.accessToken
       }));
     }
+    console.log(response)
   }
 
   logout (response) {
