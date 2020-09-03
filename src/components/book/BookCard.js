@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -15,6 +15,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import axios from 'axios'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,63 +41,101 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BookCard() {
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
-  return (
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+export default class BookCard extends Component {
+  
+  
+  constructor(props) {
+    super(props)
+    
+    console.log("props: ", props)
+    
+    this.state = {
+      id: props.match.params.id,
+      books: {}
+    }
+    
+    this.getSingleBook = this.getSingleBook.bind(this)
+    
+  }
+  
+  getSingleBook() {
+    axios.get("http://localhost:5000/api/books/" + this.state.id)
+    .then(response => {
+      this.setState({
+        book: response.data
+      })
+    })
+    
+  }
+  
+  componentDidMount() {
+    this.getSingleBook()
+  }
+  render() {
+  // const classes = useStyles()
+  // const[expanded, setExpanded] = React.useState(false)
+  // const handleExpandClick = () => {
+  //   setExpanded(!expanded);
+  // };
+    return (
+      <div>
+        <Card className={classes.root}>
+          <CardHeader
+            avatar={
+              <Avatar aria-label="bookavatar" className={classes.avatar}>
+                R
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="La odisea"
-        subheader="September 14, 2016"
-      />
-      <CardMedia
-        className={classes.media}
-        image="xxxx"
-        title="xxxx"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          xxxxxxxxxxxxxxxxxxxxxx
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          prestado?
+            }
+            action={
+              <IconButton aria-label="settings">
+                <MoreVertIcon />
+              </IconButton>
+            }
+            title={this.state.book.title}
+            subheader="September 14, 2016"
+          />
+          <CardMedia
+            className={classes.media}
+            image="xxxx"
+            title={this.state.book.author}
+          />
+          <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {this.state.book.description}
+            </Typography>
+          </CardContent>
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton aria-label="share">
+              <ShareIcon />
+            </IconButton>
+            <IconButton
+              className={clsx(classes.expand, {
+                [classes.expandOpen]: expanded,
+              })}
+              onClick={handleExpandClick}
+              aria-expanded={expanded}
+              aria-label="show more"
+            >
+              <ExpandMoreIcon />
+            </IconButton>
+          </CardActions>
+          <Collapse in={expanded} timeout="auto" unmountOnExit>
+            <CardContent>
+              prestado?
         </CardContent>
-      </Collapse>
-    </Card>
-  );
+          </Collapse>
+        </Card>
+
+      </div>
+    )
+  }
 }
+
+
+
+

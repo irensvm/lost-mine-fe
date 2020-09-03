@@ -7,9 +7,9 @@ import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Profile from './components/Profile';
 import AddBook from './components/book/AddBook';
-
-
+//import BookList from './components/book/BookList'
 import { Switch, Route } from 'react-router-dom';
+//import BookCard from './components/book/BookCard';
 
 
 
@@ -35,9 +35,10 @@ export default class App extends Component {
       <div>
         <Switch>
           <Route exact path="/" render={() => <Home />} />
-          <Route path="/books" render={props => <AddBook {...props}  />} />
+          <Route path="/books" render={props => <AddBook {...props}  />   } />
 
-          
+
+                     
           <Route path="/signup" render={props => <Signup {...props} callback={this.getTheUser} />} />
           <Route path="/login" render={props => <Login {...props} callback={this.getTheUser} />} />
 

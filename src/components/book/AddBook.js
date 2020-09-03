@@ -14,21 +14,23 @@ const useStyles = makeStyles((theme) => ({
 
 
 export class AddBook extends Component {
-    constructor(props) {
+  constructor(props) {
     super(props)
     this.state = {
       title: '',
       description: '',
       genre: '',
-      author: '',
+      author: ''
     }
-
+    this.handleChange = this.handleChange.bind(this)
   }
   handleSubmit = (e) => {
     e.preventDefault()
     const body = {
       title: this.state.title,
-      description: this.state.description
+      description: this.state.description,
+      author: this.state.author,
+      genre: this.state.genre
     }
     axios.post("http://localhost:3000/api/books/", body, { withCredentials: false }) // cambiar cuando funcione login
       .then(response => {
@@ -37,7 +39,7 @@ export class AddBook extends Component {
           title: '',
           description: '',
           genre: '',
-          author: '',
+          author: ''
         })
         //this.props.updateData()
       })
@@ -48,57 +50,63 @@ export class AddBook extends Component {
       [e.target.name]: e.target.value
     })
   }
-  
+
   render() {
     //const classes = useStyles()
     return (
       <div>
-      <form onSubmit={this.handleSubmit} className="addbook" noValidate autoComplete="off">
-       
+        <form onSubmit={this.handleSubmit} className="addbook" noValidate autoComplete="off">
+          <div>
+            <TextField
+              required
+              id="outlined-required"
+              name="title"
+              label="Title"
+              defaultValue={this.state.title}
+              variant="outlined"
+              onChange={this.handleChange}
+              className="form-control"
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="description"
+              name="description"
+              defaultValue={this.state.description}
+              variant="outlined"
+              onChange={this.handleChange}
+              className="form-control"
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="author"
+              name="author"
+              defaulValue={this.state.author}
+              variant="outlined"
+              onChange={this.handleChange}
+              className="form-control"
 
-        <div>
-          <TextField
-            required
-            id="outlined-required"
-            label="Title"
-            defaultValue={this.state.title}
-            variant="outlined"
-            onChange={this.handleChange}
-          />
-          <TextField
-            required
-            id="outlined-required"
-            label="description"
-            defaultValue={this.state.description}
-            variant="outlined"
-            onChange={this.handleChange}
-          />
-          <TextField
-            required
-            id="outlined-required"
-            label="author"
-            defaultValue={this.state.author}
-            variant="outlined"
-            onChange={this.handleChange}
+            />
+            <TextField
+              required
+              id="outlined-required"
+              label="genre"
+              defaultValue={this.state.genre}
+              variant="outlined"
+              name="genre"
+              onChange={this.handleChange}
+              className="form-control"
+            />
 
-          />
-          <TextField
-            required
-            id="outlined-required"
-            label="genre"
-            defaultValue={this.state.genre}
-            variant="outlined"
-            onChange={this.handleChange}
-          />
-         
-        </div>
-        <input type="submit"
-          className="btn btn-primary"
-          value="Add book" />
-      </form>
+          </div>
+          <input type="submit"
+            className="btn btn-primary"
+            value="Add book" />
+        </form>
 
       </div>
-      
+
     )
 
   }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class Signup extends Component {
     constructor(props) {
         super(props);
-        this.state = { password: '', email: '' };
+        this.state = { email: '', password: '' };
         this.service = new AuthService();
     }
 
@@ -14,11 +14,11 @@ class Signup extends Component {
         const password = this.state.password;
         const email = this.state.email;
 
-        this.service.signup(password, email)
+        this.service.signup(email, password)
             .then(response => {
                 this.setState({
-                    password: "",
-                    email: ""
+                    email: "",
+                    password: ""
                 });
                 this.props.getUser(response)
             })
@@ -26,8 +26,8 @@ class Signup extends Component {
     }
 
     handleChange = (event) => {
-        const { otro, value } = event.target;
-        this.setState({ [otro]: value });
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
     }
     render() {
         return (
@@ -61,10 +61,11 @@ class Signup extends Component {
 
 
                 <div className="google-icon-wrapper">
-                    <a href="/auth/google">
-                        <img width="20px" alt="google-icon" class="google-icon"
-                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" /> </a>
-                    <p class="btn-text"><b>Sign up with Google</b></p>
+                    <div onClick={() => this.service.googleAuth()
+                    }>
+                        <img width="20px" alt="google-icon" className="google-icon"
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" /> </div>
+                    <p className="btn-text"><b>Sign up with Google</b></p>
                 </div>
 
                 <div className="already">
