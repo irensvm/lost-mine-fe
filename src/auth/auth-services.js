@@ -29,13 +29,13 @@ class AuthService {
             .then(response => response.data)
     }
 
-    googleAuth = () => {
-        return this.service.get('/auth/google', {})
-            .then(response => {
-                console.log(response)
+  // googleAuth = () => {
+  //     return this.service.get('/auth/google', {})
+  //         .then(response => {
+  //             console.log(response)
 
-            })
-    }
+  //         })
+  // }
 
 
 

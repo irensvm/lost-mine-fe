@@ -61,11 +61,12 @@ class Signup extends Component {
 
 
                 <div className="google-icon-wrapper">
-                    <div onClick={() => this.service.googleAuth()
-                    }>
+                    
+                    <a href='http://localhost:3000/api/auth/google'>
                         <img width="20px" alt="google-icon" className="google-icon"
-                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" /> </div>
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" /> 
                     <p className="btn-text"><b>Sign up with Google</b></p>
+                    </a>
                 </div>
 
                 <div className="already">
