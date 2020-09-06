@@ -1,27 +1,22 @@
 import React, { Component } from 'react'
-import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
-//import { render } from '@testing-library/react';
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-}));
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Col, Form } from 'react-bootstrap';
 
 
 export class AddBook extends Component {
   constructor(props) {
     super(props)
+    
     this.state = {
       title: '',
       description: '',
       genre: '',
-      author: ''
+      author: '',
+      loggedInUser: this.props.user,
+
     }
+    console.log(this.state)
     this.handleChange = this.handleChange.bind(this)
   }
   handleSubmit = (e) => {
@@ -30,9 +25,10 @@ export class AddBook extends Component {
       title: this.state.title,
       description: this.state.description,
       author: this.state.author,
-      genre: this.state.genre
+      genre: this.state.genre,
+      owner: this.state.loggedInUser
     }
-    axios.post("http://localhost:3000/api/books/", body, { withCredentials: false }) // cambiar cuando funcione login
+    axios.post("http://localhost:3000/api/books/", body, { withCredentials: true }) // cambiar cuando funcione login
       .then(response => {
         // limpiar el formulario.
         this.setState({
@@ -52,60 +48,59 @@ export class AddBook extends Component {
   }
 
   render() {
-    //const classes = useStyles()
     return (
       <div>
-        <form onSubmit={this.handleSubmit} className="addbook" noValidate autoComplete="off">
-          <div>
-            <TextField
-              required
-              id="outlined-required"
-              name="title"
-              label="Title"
-              defaultValue={this.state.title}
-              variant="outlined"
-              onChange={this.handleChange}
-              className="form-control"
-            />
-            <TextField
-              required
-              id="outlined-required"
-              label="description"
-              name="description"
+        <Form action= "POST" onSubmit={this.handleSubmit} className="addbook" noValidate autoComplete="off" >
+          <Form.Row >
+            <Form.Group as={Col} controlId="formGridTitle">
+              <Form.Label>Title</Form.Label>
+              <Form.Control name="title"
+                label="Title"
+                defaultValue={this.state.title}
+                onChange={this.handleChange} type="text" />
+            </Form.Group>
+
+            <Form.Group as={Col} controlId="formGridAuthor">
+              <Form.Label>Author</Form.Label>
+              <Form.Control name="author"
+                defaulValue={this.state.author}
+                onChange={this.handleChange} type="text" />
+            </Form.Group>
+            <Form.Group as={Col} controlId="formGridState">
+              <Form.Label>Genre</Form.Label>
+              <Form.Control as="select" defaultValue={this.state.genre} name="genre" onChange={this.handleChange}>
+                <option>Thriller</option>
+                <option>Fantasy</option>
+                <option>Adventure</option>
+                <option>Romance</option>
+                <option>Contemporary</option>
+                <option>Dystopian</option>
+                <option>Mystery</option>
+                <option>Horror</option>
+                <option>Paranormal</option>
+                <option>Memoir</option>
+                <option>Travel</option>
+                <option>Guide / How to</option>
+                <option>Cooking</option>
+              </Form.Control>
+            </Form.Group>
+          </Form.Row>
+          <Form.Group controlId="formGridAddress1">
+            <Form.Label>Description</Form.Label>
+            <Form.Control placeholder="this book is about..." name="description"
               defaultValue={this.state.description}
-              variant="outlined"
-              onChange={this.handleChange}
-              className="form-control"
-            />
-            <TextField
-              required
-              id="outlined-required"
-              label="author"
-              name="author"
-              defaulValue={this.state.author}
-              variant="outlined"
-              onChange={this.handleChange}
-              className="form-control"
+              onChange={this.handleChange} />
+          </Form.Group>
 
-            />
-            <TextField
-              required
-              id="outlined-required"
-              label="genre"
-              defaultValue={this.state.genre}
-              variant="outlined"
-              name="genre"
-              onChange={this.handleChange}
-              className="form-control"
-            />
-
-          </div>
           <input type="submit"
             className="btn btn-primary"
             value="Add book" />
-        </form>
+
+        </Form>
 
       </div>
+
+
 
     )
 

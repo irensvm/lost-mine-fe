@@ -21,14 +21,16 @@ export default class Login extends Component {
                     password: "",
                 });
                 this.props.getUser(response)
+                this.props.history.push(`/profile/`);
+
             })
             .catch(error => console.log("the error:", error))
     }
 
     handleChange = (event) => {
-        const { email, value } = event.target;
+        const { name, value } = event.target;
         this.setState({
-            [email]: value
+            [name]: value
         });
     }
 
@@ -57,6 +59,16 @@ export default class Login extends Component {
                         LOGIN
                     </button>
                 </form>
+                <div className="google-icon-wrapper">
+
+                    <a href='http://localhost:3000/api/auth/google'>
+                        <img width="20px" alt="google-icon" className="google-icon"
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                        <p className="btn-text"><b>Sign up with Google</b></p>
+                    </a>
+                </div>
+
+
 
                 <div className="return">
                     <Link to={"/signup"}>return to sign up!</Link>

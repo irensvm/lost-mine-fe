@@ -8,7 +8,8 @@ export default class BookList extends Component {
 constructor(props) {
     super(props)
     this.state = {
-        books: []
+        books: [],
+       // user: session.user.current_id
     }
 }
 componentDidMount() {

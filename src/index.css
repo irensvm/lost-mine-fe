@@ -14,10 +14,10 @@ code {
 
 .menu {
   
-  background-image: url("https://cdn.zendalibros.com/wp-content/uploads/critica.-libros-estanteria.-hotbook-10-libros-para-ser-mejor-en-la-vida-portada-303x227.jpg");
+  background-image: url("https://www.canterbury.ac.nz/library/libraries/about-the-library/content-blocks/1502754366153_Old-bookshelf-with-aged-books-orig.jpg");
   width: 600px;
   height: 600px;
-  
+  color: white;  
 
 }
 .google-btn {
@@ -51,3 +51,7 @@ code {
     box-shadow: 0 0 6px #4285f4; }
   .google-btn:active {
     background: #1669F2; }
+
+.book-card{
+  width: 90px;
+}    

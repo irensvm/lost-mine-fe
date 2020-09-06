@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import AuthService from '../../auth/auth-services';
 import { Link } from 'react-router-dom';
+import {Button, Form} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class Signup extends Component {
     constructor(props) {
@@ -31,41 +34,44 @@ class Signup extends Component {
     }
     render() {
         return (
-            <div className="signup">
-                <h2>register form</h2>
-                <form onSubmit={this.handleFormSubmit} className="form-div">
-
-                    <input
-                        className="input-form"
-                        type="email"
-                        placeholder="your email"
-                        name="email"
-                        value={this.state.email}
-                        onChange={e => this.handleChange(e)}
-                    />
-
-                    <input
-                        className="input-form"
-                        type="password"
-                        placeholder=" password"
-                        name="password"
-                        value={this.state.password}
-                        onChange={e => this.handleChange(e)}
-                    />
+            <div >
 
 
-                    <button className="btn log-btn" type="submit">
-                        SIGN IN
-                    </button>
-                </form>
 
+                <Form className="signup" onSubmit={this.handleFormSubmit}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control className="input-form"
+                            type="email"
+                            placeholder="your email"
+                            name="email"
+                            value={this.state.email}
+                            onChange={e => this.handleChange(e)} />
+                        <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                    </Form.Text>
+                    </Form.Group>
 
-                <div className="google-icon-wrapper">
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control className="input-form"
+                            type="password"
+                            placeholder=" password"
+                            name="password"
+                            value={this.state.password}
+                            onChange={e => this.handleChange(e)} />
+                    </Form.Group>
                     
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+                <div className="google-icon-wrapper">
+
                     <a href='http://localhost:3000/api/auth/google'>
                         <img width="20px" alt="google-icon" className="google-icon"
-                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" /> 
-                    <p className="btn-text"><b>Sign up with Google</b></p>
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                        <p className="btn-text"><b>Sign up with Google</b></p>
                     </a>
                 </div>
 
@@ -75,6 +81,49 @@ class Signup extends Component {
                 </div>
 
             </div>
+            //<h2>register form</h2>
+            //</div><form onSubmit={this.handleFormSubmit} className="form-div">
+
+            //</div>    <input
+            //</div>        className="input-form"
+            //</div>        type="email"
+            //</div>        placeholder="your email"
+            //</div>        name="email"
+            //</div>        value={this.state.email}
+            //</div>        onChange={e => this.handleChange(e)}
+            //</div>    />
+
+            //</div>    <input
+            //</div>        className="input-form"
+            //</div>        type="password"
+            //</div>        placeholder=" password"
+            //</div>        name="password"
+            //</div>        value={this.state.password}
+            //</div>        onChange={e => this.handleChange(e)}
+            //</div>    />
+
+
+            //</div>    <button className="btn log-btn" type="submit">
+            //</div>        SIGN IN
+            //</div>    </button>
+            //</div></form>
+
+
+            //</div><div className="google-icon-wrapper">
+
+            //</div>    <a href='http://localhost:3000/api/auth/google'>
+            //</div>        <img width="20px" alt="google-icon" className="google-icon"
+            //</div>            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+            //</div>        <p className="btn-text"><b>Sign up with Google</b></p>
+            //</div>    </a>
+            //</div></div>
+
+            //</div><div className="already">
+            //</div>    <p className="m-0 mr-3">Already have account?</p>
+            //</div>    <Link to={"/login"}>Login!</Link>
+            //</div></div>
+
+
         )
     }
 }
