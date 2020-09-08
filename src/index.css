@@ -53,5 +53,12 @@ code {
     background: #1669F2; }
 
 .book-card{
-  width: 90px;
+  width: 260px;
+  height: 480px;
 }    
+.book-img{
+  width: 260px;
+  height: 180px;
+}   
+
+

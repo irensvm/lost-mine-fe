@@ -37,7 +37,7 @@ export default class App extends Component {
           <Route exact path="/" render={() => <Home />} />
           <Route path="/signup" render={props => <Signup {...props} callback={this.getTheUser} />} />
           <Route path="/login" render={props => <Login {...props} callback={this.getTheUser} />} />
-          <Route path="/profile" render={props => <Profile {...props} user={this.state.loggedInUser} getUser={this.getTheUser} />} />
+          <Route path="/profile" render={props => <Profile {...props} user={this.state.loggedInUser} key={this.state.loggedInUser} getUser={this.getTheUser} />} />
           <Route path="/books" render={props => <AddBook {...props} user={this.state.loggedInUser} getUser={this.getTheUser} />} />
           <Route path="/booklist" render={props => <BookList {...props} user={this.state.loggedInUser} getUser={this.getTheUser} />} />
 
