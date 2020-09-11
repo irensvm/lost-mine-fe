@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Logout from './components/auth/Logout';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
-import Profile from './components/Profile';
+import Profile from './components/profile/Profile';
 import AddBook from './components/book/AddBook';
 import BookList from './components/book/BookList';
 

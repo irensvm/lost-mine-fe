@@ -23,11 +23,11 @@ export default class EditBook extends Component {
 
         event.preventDefault();
 
-        axios.put(`http://localhost:5000/api/books/${this.props.theBook._id}`, { title, opinion }, { withCredentials: true })
+        axios.put(`http://localhost:3000/api/books/${this.props.theBook._id}`, { title, owner, rating, opinion }, { withCredentials: true })
             .then(() => {
                 this.props.getTheBook();
                 // after submitting the form, redirect to '/projects'
-                //this.props.history.push('/projects');
+                this.props.history.push('/mybooks');
             })
             .catch(error => console.log(error))
     }

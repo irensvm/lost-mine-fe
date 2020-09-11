@@ -37,9 +37,6 @@ class Signup extends Component {
         return (
             <div >
             <NavBar></NavBar>
-
-
-
                 <Form className="signup" onSubmit={this.handleFormSubmit}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
