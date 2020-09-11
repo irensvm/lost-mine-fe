@@ -3,21 +3,39 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-export default  class NavBar extends Component {
+export default class NavBar extends Component {
 
     render() {
+        let authLink = (
+            <>
+                <li className="nav-item">
+                    <Nav.Link to="/signup" className="nav-link">Signup</Nav.Link>
+                </li>
+                <li className="nav-item">
+                    <Nav.Link to="/login" className="nav-link">Login</Nav.Link>
+                </li>
+            </>
+        )
+        if (this.props.user) {
+            console.log("Hay usuario logueado!", this.props.user)
+            authLink = (
+                <li className="nav-item">
+                    <Nav.Link to="/logout" className="nav-link">Hola {this.props.user.email}, Logout</Nav.Link>
+                </li>
+            )
+        }
         return (
             <div>
                 <Navbar className="navbar" bg="light" variant="light">
                     <Navbar.Brand href="/">Lost&Mine</Navbar.Brand>
                     <Nav className="mr-auto">
-                        <Nav.Link href="/books">Books</Nav.Link>
+                        <Nav.Link to="/books">Books</Nav.Link>
                     </Nav>
-                    <NavDropdown title="Welcome back!" id="collasible-nav-dropdown">
-                        <NavDropdown.Item href="/login">Login</NavDropdown.Item>
-                        <NavDropdown.Item href="/signup">Sign up</NavDropdown.Item>
-                        <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>      </NavDropdown>
-                    
+                    <NavDropdown title="Menu" id="collasible-nav-dropdown">
+                        <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                        <NavDropdown.Item to="/mybooks">My books</NavDropdown.Item>
+                    </NavDropdown>
+
                 </Navbar>
 
 

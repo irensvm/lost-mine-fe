@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ProtectedRoute from './auth/protected-route';
 
 import Home from './components/Home';
 import Logout from './components/auth/Logout';
@@ -37,12 +38,17 @@ export default class App extends Component {
           <Route exact path="/" render={() => <Home />} />
           <Route path="/signup" render={props => <Signup {...props} callback={this.getTheUser} />} />
           <Route path="/login" render={props => <Login {...props} callback={this.getTheUser} />} />
-          <Route path="/profile" render={props => <Profile {...props} user={this.state.loggedInUser} key={this.state.loggedInUser} getUser={this.getTheUser} />} />
-          <Route path="/books" render={props => <AddBook {...props} user={this.state.loggedInUser} getUser={this.getTheUser} />} />
-          <Route path="/booklist" render={props => <BookList {...props} user={this.state.loggedInUser} getUser={this.getTheUser} />} />
-
-
           <Route exact path="/logout" render={(props) => <Logout {...props} callback={this.getTheUser} />}
+          />
+          <ProtectedRoute
+            path="/profile"
+            user={this.state.loggedInUser}
+            component={Profile}
+          />
+          <ProtectedRoute
+            path="/books"
+            user={this.state.loggedInUser}
+            component={BookList}
           />
 
         </Switch>

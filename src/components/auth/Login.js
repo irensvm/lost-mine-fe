@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import AuthService from '../../auth/auth-services';
+import NavBar from '../NavBar'
+
 
 export default class Login extends Component {
     constructor(props) {
@@ -16,15 +18,10 @@ export default class Login extends Component {
 
         this.service.login(email, password)
             .then(response => {
-                this.setState({
-                    email: "",
-                    password: "",
-                });
-                this.props.getUser(response)
-                this.props.history.push(`/profile/`);
-
+                this.setState({ email: "", password: "" });
+                this.props.callback(response)
             })
-            .catch(error => console.log("the error:", error))
+            .catch(error => console.log(error))
     }
 
     handleChange = (event) => {
@@ -38,6 +35,7 @@ export default class Login extends Component {
     render() {
         return (
             <div className="container-fluid auth">
+            <NavBar></NavBar>
                 <h2>Login</h2>
                 <form onSubmit={this.handleFormSubmit} className="form-div">
                     <input
@@ -50,26 +48,16 @@ export default class Login extends Component {
 
                     <input
                         className="input-form"
-                        type="text"
+                        type="password"
                         name="password"
                         value={this.state.password}
                         onChange={e => this.handleChange(e)}
                     />
-                    <button className="btn log-btn" type="submit">
-                        LOGIN
-                    </button>
+                    <input type="submit" value="Login">
+                        
+                    </input>
                 </form>
-                <div className="google-icon-wrapper">
-
-                    <a href='http://localhost:3000/api/auth/google'>
-                        <img width="20px" alt="google-icon" className="google-icon"
-                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
-                        <p className="btn-text"><b>Sign up with Google</b></p>
-                    </a>
-                </div>
-
-
-
+               
                 <div className="return">
                     <Link to={"/signup"}>return to sign up!</Link>
                 </div>

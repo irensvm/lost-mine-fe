@@ -61,4 +61,12 @@ code {
   height: 180px;
 }   
 
+.star {
+  cursor: pointer;
+  transition: color 20ms;
+}
 
+input[type="radio"] {
+  display: "none";
+}
+  

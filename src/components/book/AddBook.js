@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Form } from 'react-bootstrap';
-
+import Rating from './Rating';
 
 export class AddBook extends Component {
   constructor(props) {
@@ -13,6 +13,7 @@ export class AddBook extends Component {
       description: '',
       genre: '',
       author: '',
+      rating:'',
       loggedInUser: this.props.user,
 
     }
@@ -23,19 +24,24 @@ export class AddBook extends Component {
     e.preventDefault()
     const body = {
       title: this.state.title,
-      description: this.state.description,
-      author: this.state.author,
+      opinion: this.state.opinion,
+      lented: this.state.lented,
       genre: this.state.genre,
-      owner: this.state.loggedInUser
+      rating: this.state.rating,
+      owner: this.state.owner
     }
     axios.post("http://localhost:3000/api/books/", body, { withCredentials: true }) // cambiar cuando funcione login
       .then(response => {
         // limpiar el formulario.
         this.setState({
           title: '',
-          description: '',
+          opinion: '',
           genre: '',
-          author: ''
+          rating: '',
+          lented:'',
+          owner:''
+
+        
         })
         //this.props.updateData()
       })
@@ -61,9 +67,9 @@ export class AddBook extends Component {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridAuthor">
-              <Form.Label>Author</Form.Label>
-              <Form.Control name="author"
-                defaulValue={this.state.author}
+              <Form.Label>Lented to</Form.Label>
+              <Form.Control name="lented"
+                defaulValue={this.state.lented}
                 onChange={this.handleChange} type="text" />
             </Form.Group>
             <Form.Group as={Col} controlId="formGridState">
@@ -86,11 +92,18 @@ export class AddBook extends Component {
             </Form.Group>
           </Form.Row>
           <Form.Group controlId="formGridAddress1">
-            <Form.Label>Description</Form.Label>
-            <Form.Control placeholder="this book is about..." name="description"
-              defaultValue={this.state.description}
+            <Form.Label>Review</Form.Label>
+            <Form.Control placeholder="did it like you?" name="opinion"
+              defaultValue={this.state.opinion}
               onChange={this.handleChange} />
           </Form.Group>
+          <Form.Group controlId="formGridAddress1">
+            <Form.Label>Owner</Form.Label>
+            <Form.Control placeholder="this book belong to..." name="owner"
+              defaultValue={this.state.owner}
+              onChange={this.handleChange} />
+          </Form.Group>
+          <Rating onChange={this.handleChange}></Rating>
 
           <input type="submit"
             className="btn btn-primary"
