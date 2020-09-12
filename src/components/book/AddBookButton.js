@@ -6,7 +6,7 @@ export default class AddBookButton extends Component {
     render() {
         return (
             <div>
-                <Button to='/createbook'><img src='/public/book (1).png'  ></img>  </Button>
+                <Button href='/createbook'><img src='/public/book (1).png'  ></img>  </Button>
             </div>
         )
     }

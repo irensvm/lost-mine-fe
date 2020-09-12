@@ -30,7 +30,7 @@ export default function OpenMenu() {
         <MenuItem onClick={handleClose}><NavLink to="/" className="nav-link"> Home </NavLink></MenuItem>
 
         <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}><NavLink to="/books" className="nav-link">Books</NavLink></MenuItem>
+        <MenuItem onClick={handleClose}><NavLink to="/mybooks" className="nav-link">Books</NavLink></MenuItem>
 
         <MenuItem onClick={handleClose}> <NavLink to="/logout" className="nav-link"> Logout </NavLink></MenuItem>
       </Menu>

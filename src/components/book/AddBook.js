@@ -3,6 +3,7 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Form } from 'react-bootstrap';
 import Rating from './Rating';
+import OpenMenu from '../OpenMenu';
 
 export class AddBook extends Component {
   constructor(props) {
@@ -10,10 +11,11 @@ export class AddBook extends Component {
     
     this.state = {
       title: '',
-      description: '',
+      opinion: '',
       genre: '',
-      author: '',
+      owner: '',
       rating:'',
+      lented:'',
       loggedInUser: this.props.user,
 
     }
@@ -56,6 +58,7 @@ export class AddBook extends Component {
   render() {
     return (
       <div>
+      <OpenMenu></OpenMenu>
         <Form action= "POST" onSubmit={this.handleSubmit} className="addbook" noValidate autoComplete="off" >
           <Form.Row >
             <Form.Group as={Col} controlId="formGridTitle">

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ProtectedRoute from './auth/protected-route';
-
+import AnonymousRoute from './auth/anonymous-route'
 import Home from './components/Home';
 import Logout from './components/auth/Logout';
 import Signup from './components/auth/Signup';
@@ -11,6 +11,7 @@ import BookList from './components/book/BookList';
 
 
 import { Switch, Route } from 'react-router-dom';
+import myBooks from './components/book/myBooks';
 
 
 
@@ -36,8 +37,8 @@ export default class App extends Component {
       <div>
         <Switch>
           <Route exact path="/" render={() => <Home />} />
-          <Route path="/signup" render={props => <Signup {...props} callback={this.getTheUser} />} />
-          <Route path="/login" render={props => <Login {...props} callback={this.getTheUser} />} />
+          <Route path="/signup" render={(props) => <Signup {...props} callback={this.getTheUser} />} />
+          <AnonymousRoute path="/login" render={() => <Login  />} />
           <Route exact path="/logout" render={(props) => <Logout {...props} callback={this.getTheUser} />}
           />
           <ProtectedRoute
@@ -46,9 +47,14 @@ export default class App extends Component {
             component={Profile}
           />
           <ProtectedRoute
-            path="/books"
+            path="/mybooks"
             user={this.state.loggedInUser}
-            component={BookList}
+            component={myBooks}
+          />
+          <ProtectedRoute
+            path="/createbook"
+            user={this.state.loggedInUser}
+            component={AddBook}
           />
 
         </Switch>

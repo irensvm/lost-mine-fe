@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import AuthService from '../../auth/auth-services';
 import NavBar from '../NavBar'
+import axios from 'axios'
 
 
 export default class Login extends Component {
@@ -35,7 +36,7 @@ export default class Login extends Component {
     render() {
         return (
             <div className="container-fluid auth">
-            <NavBar></NavBar>
+                <NavBar></NavBar>
                 <h2>Login</h2>
                 <form onSubmit={this.handleFormSubmit} className="form-div">
                     <input
@@ -54,10 +55,10 @@ export default class Login extends Component {
                         onChange={e => this.handleChange(e)}
                     />
                     <input type="submit" value="Login">
-                        
+
                     </input>
                 </form>
-               
+
                 <div className="return">
                     <Link to={"/signup"}>return to sign up!</Link>
                 </div>
