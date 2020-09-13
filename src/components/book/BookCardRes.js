@@ -1,17 +1,16 @@
 import React from 'react'
-import { Card, CardColumns } from 'react-bootstrap';
+import { Card, CardColumns, CardDeck } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FavButton from './FavButton'
 
 
-
 export default function BookCard(props) {
   return (
-    <div >
+    <div style={{marginTop: 20, marginBottom: 20, width: 900}}>
     
-      <CardColumns  className='card-group' >
+      <CardDeck  className='card-group' >
         <Card   border="dark" style={{ width: '18rem' }}   className="book-card" >
-          <Card.Img className="book-img" style={{ width: "50%" }}variant="top" src={props.image} alt="xxx" />
+          <Card.Img className="book-img" style={{ width: "50%" }} variant="top" src={props.image} alt="xxx" />
           <Card.Title>{props.title}</Card.Title>
           <Card.Text>
             {props.description}
@@ -25,7 +24,7 @@ export default function BookCard(props) {
           </Card.Footer>
         </Card>
 
-      </CardColumns>
+      </CardDeck>
 
 
     </div>
