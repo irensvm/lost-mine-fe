@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AuthService from '../../auth/auth-services';
-import { Link } from 'react-router-dom';
-import {Button, Form} from 'react-bootstrap';
+import { Link, Redirect } from 'react-router-dom';
+import { Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from '../NavBar'
 
@@ -10,6 +10,7 @@ class Signup extends Component {
         super(props);
         this.state = { email: '', password: '' };
         this.service = new AuthService();
+        
     }
 
     handleFormSubmit = (event) => {
@@ -36,7 +37,7 @@ class Signup extends Component {
     render() {
         return (
             <div >
-            <NavBar></NavBar>
+                <NavBar></NavBar>
                 <Form className="signup" onSubmit={this.handleFormSubmit}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
@@ -50,7 +51,6 @@ class Signup extends Component {
                             We'll never share your email with anyone else.
                     </Form.Text>
                     </Form.Group>
-
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control className="input-form"
@@ -60,21 +60,18 @@ class Signup extends Component {
                             value={this.state.password}
                             onChange={e => this.handleChange(e)} />
                     </Form.Group>
-                    
+
                     <Button variant="primary" type="submit">
-                        Submit
+                        Create account
                     </Button>
                 </Form>
-                
                 <div className="already">
                     <p className="m-0 mr-3">Already have account?</p>
                     <Link to={"/login"}>Login!</Link>
                 </div>
 
+                <Redirect to={'/profile'} />
             </div>
-           
-
-
         )
     }
 }

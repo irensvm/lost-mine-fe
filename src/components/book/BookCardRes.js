@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardGroup } from 'react-bootstrap';
+import { Card, CardColumns } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FavButton from './FavButton'
 
@@ -9,8 +9,8 @@ export default function BookCard(props) {
   return (
     <div >
     
-      <CardGroup className='card-group' >
-        <Card   text='dark' border="success"   className="book-card" >
+      <CardColumns  className='card-group' >
+        <Card   border="dark" style={{ width: '18rem' }}   className="book-card" >
           <Card.Img className="book-img" style={{ width: "50%" }}variant="top" src={props.image} alt="xxx" />
           <Card.Title>{props.title}</Card.Title>
           <Card.Text>
@@ -25,7 +25,7 @@ export default function BookCard(props) {
           </Card.Footer>
         </Card>
 
-      </CardGroup>
+      </CardColumns>
 
 
     </div>

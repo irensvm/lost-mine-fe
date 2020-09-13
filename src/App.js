@@ -6,15 +6,12 @@ import Logout from './components/auth/Logout';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Profile from './components/profile/Profile';
+import EditProfile from './components/profile/EditProfile';
 import AddBook from './components/book/AddBook';
-import BookList from './components/book/BookList';
-
-
 import { Switch, Route } from 'react-router-dom';
 import myBooks from './components/book/myBooks';
-
-
-
+import EditBook from './components/book/EditBook';
+import Books from './components/book/Books';
 
 export default class App extends Component {
   constructor(props) {
@@ -23,8 +20,6 @@ export default class App extends Component {
       loggedInUser: JSON.parse(localStorage.getItem('loggedInUser')) || null,
     }
   }
-
-
   getTheUser = (userObject) => {
     this.setState({
       loggedInUser: userObject
@@ -37,8 +32,9 @@ export default class App extends Component {
       <div>
         <Switch>
           <Route exact path="/" render={() => <Home />} />
+          <Route exact path="/books" render={() => <Books />} />
           <Route path="/signup" render={(props) => <Signup {...props} callback={this.getTheUser} />} />
-          <AnonymousRoute path="/login" render={() => <Login  />} />
+          <Route path="/login" render={(props) => <Login {...props} callback={this.getTheUser} />} />
           <Route exact path="/logout" render={(props) => <Logout {...props} callback={this.getTheUser} />}
           />
           <ProtectedRoute
@@ -55,6 +51,16 @@ export default class App extends Component {
             path="/createbook"
             user={this.state.loggedInUser}
             component={AddBook}
+          />
+          <ProtectedRoute
+            path="/editprofile"
+            user={this.state.loggedInUser}
+            component={EditProfile}
+          />
+          <ProtectedRoute
+            path="/editbook"
+            user={this.state.loggedInUser}
+            component={EditBook}
           />
 
         </Switch>

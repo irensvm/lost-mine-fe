@@ -10,7 +10,7 @@ export default class Home extends Component {
         return (
             <div className="menu" >
                 <NavBar></NavBar>
-                <h1 > LOST&MINE</h1>
+                <h1></h1>
                 <Books></Books>
                 
 

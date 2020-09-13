@@ -1,5 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Rating from './Rating';
+import axios from 'axios';
+import { Form } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Redirect } from 'react-router-dom';
+
 
 
 export default class EditBook extends Component {
@@ -19,11 +24,8 @@ export default class EditBook extends Component {
         const rating = this.state.rating;
         const owner = this.state.owner;
         const lented = this.state.lented;
-
-
         event.preventDefault();
-
-        axios.put(`http://localhost:3000/api/books/${this.props.theBook._id}`, { title, owner, rating, opinion }, { withCredentials: true })
+        axios.put(`http://localhost:3000/api/books/${this.props.theBook._id}`, { lented, owner, rating, opinion }, { withCredentials: true })
             .then(() => {
                 this.props.getTheBook();
                 // after submitting the form, redirect to '/projects'
@@ -64,6 +66,7 @@ export default class EditBook extends Component {
                         <textarea
                             className="form-control"
                             name="opinion"
+                            placeholder={this.state.opinion}
                             value={this.state.opinion}
                             onChange={e => this.handleChangeOpinion(e)} />
                     </div>
@@ -87,11 +90,13 @@ export default class EditBook extends Component {
                             value={this.state.lented}
                             onChange={e => this.handleChangeLented(e)} />
                     </div>
-                    <input type="submit"
+                    <input  type="submit"
                         className="btn btn-primary"
                         value="Save changes" />
 
                 </Form>
+
+                <Redirect to={'/mybooks'} />
 
             </div>
         )

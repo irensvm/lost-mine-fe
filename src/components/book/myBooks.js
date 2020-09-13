@@ -3,7 +3,11 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import BookCard from './BookCard'
 import OpenMenu from '../../components/OpenMenu'
-import { Card } from 'react-bootstrap';
+import NavBar from '../NavBar'
+import { Card, Navbar } from 'react-bootstrap';
+import AddBookButton from './AddBookButton'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 export default class myBooks extends Component {
@@ -41,9 +45,9 @@ export default class myBooks extends Component {
         ))
         return (
             <div>
-                <OpenMenu></OpenMenu>
-                {books}
-
+            <NavBar></NavBar>
+            <AddBookButton></AddBookButton>
+            {books}
             </div>
         )
     }

@@ -28,12 +28,12 @@ export default class NavBar extends Component {
             <div>
                 <Navbar className="navbar" bg="light" variant="light">
                     <Navbar.Brand href="/">Lost&Mine</Navbar.Brand>
-                    <Nav className="mr-auto">
-                        <Nav.Link to="/books">Books</Nav.Link>
-                    </Nav>
+                    <Nav className="mr-auto"></Nav>
                     <NavDropdown title="Menu" id="collasible-nav-dropdown">
                         <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
-                        <NavDropdown.Item to="/mybooks">My books</NavDropdown.Item>
+                        <NavDropdown.Item href="/mybooks">My books</NavDropdown.Item>
+                        <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
+
                     </NavDropdown>
 
                 </Navbar>

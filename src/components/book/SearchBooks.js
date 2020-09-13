@@ -8,8 +8,9 @@ const SearchBooks = (props) => {
     return (
         <div className="search-books">
             <Form onSubmit={props.searchBook} inline>
-                <FormControl onChange={props.handleSearch} type="text" placeholder="Search" className="mr-sm-2" />
-                <Button type="submit" variant="outline-primary">Search</Button>
+                <h1>Looking for some books?</h1>
+                <FormControl onChange={props.handleSearch} type="text" placeholder="" className="mr-sm-2"/>
+                <Button type="submit" variant="outline-light">Search</Button>
             </Form>
         </div>
     )

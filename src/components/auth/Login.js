@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import AuthService from '../../auth/auth-services';
 import NavBar from '../NavBar'
 import axios from 'axios'
+import { Button } from '@material-ui/core';
 
 
 export default class Login extends Component {
@@ -60,7 +61,7 @@ export default class Login extends Component {
                 </form>
 
                 <div className="return">
-                    <Link to={"/signup"}>return to sign up!</Link>
+                    <Button href={"/signup"}>return to sign up!</Button>
                 </div>
             </div>
         )

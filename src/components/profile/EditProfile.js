@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { Form } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Redirect } from 'react-router-dom';
+
+
 
 export default class EditProfile extends Component {
     constructor(props) {
@@ -58,6 +63,7 @@ export default class EditProfile extends Component {
                         value="Save changes" />
 
                 </Form>
+                <Redirect to={'/profile'} />
 
             </div>
         )

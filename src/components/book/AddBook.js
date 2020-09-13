@@ -108,7 +108,7 @@ export class AddBook extends Component {
           </Form.Group>
           <Rating onChange={this.handleChange}></Rating>
 
-          <input type="submit"
+          <input href= "/mybooks" type="submit"
             className="btn btn-primary"
             value="Add book" />
 
