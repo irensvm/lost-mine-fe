@@ -70,7 +70,7 @@ class Signup extends Component {
                     <Link to={"/login"}>Login!</Link>
                 </div>
 
-                <Redirect to={'/profile'} />
+                
             </div>
         )
     }
