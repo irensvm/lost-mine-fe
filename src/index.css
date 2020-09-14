@@ -15,9 +15,8 @@ code {
 .menu {
   
   background-image: url("https://www.canterbury.ac.nz/library/libraries/about-the-library/content-blocks/1502754366153_Old-bookshelf-with-aged-books-orig.jpg");
-  width: 600px;
-  height: 600px;
-  color: white;  
+   color: white; 
+  background-size: cover; 
 
 }
 .google-btn {
@@ -52,21 +51,20 @@ code {
   .google-btn:active {
     background: #1669F2; }
 
-.book-card{
-  width: 18rem;
-  color: black;
   
-}    
 .book-img{
   width: 50%;
-}   
-
+}
 .star {
   cursor: pointer;
   transition: color 20ms;
 }
-
 input[type="radio"] {
   display: "none";
 }
-  
+.card-text{
+  text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 10px;
+}

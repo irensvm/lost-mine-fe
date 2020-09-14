@@ -4,6 +4,7 @@ import MyBooks from '../book/myBooks'
 import BookList from '../book/BookList'
 import NavBar from '../NavBar'
 import { Button } from 'react-bootstrap'
+import { Redirect } from 'react-router-dom'
 
 
 
@@ -15,6 +16,7 @@ export default class Profile extends Component {
         }
     }
     render() {
+        
         return (
             <div>
             <NavBar></NavBar>       

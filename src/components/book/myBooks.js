@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 import BookCard from './BookCard'
 import OpenMenu from '../../components/OpenMenu'
 import NavBar from '../NavBar'
-import { Card, Navbar } from 'react-bootstrap';
+import { Card, Navbar, CardDeck, Button } from 'react-bootstrap';
 import AddBookButton from './AddBookButton'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FavButton from './FavButton'
 
 
 
@@ -32,21 +33,28 @@ export default class myBooks extends Component {
     render() {
         const books = this.state.books.map(book => (
             <div key={book._id}>
-                <Card text='dark' border="success" className="book-card" >
+                <CardDeck>
+                <Card bg="dark" text='light' border="light" className="book-card" >
                     <Card.Title>Title:{book.title}</Card.Title>
-                    <Card.Text>Review:{book.opinion}</Card.Text>
-                    <Card.Text>Belongs to:{book.owner}</Card.Text>
+                    <Card.Text>Review:{book.opinion}</Card.Text>                    
                     <Card.Text>Lented to:{book.lented}</Card.Text>
                     <Card.Footer>
                         <small className="text-muted">Rating:</small> {book.rating}
+                        <FavButton></FavButton>
+                        <i class="far fa-edit"></i>
                     </Card.Footer>
                 </Card>
+
+                </CardDeck>
+
             </div>
         ))
         return (
             <div>
-            <NavBar></NavBar>
+            <NavBar>                
+            </NavBar>
             <AddBookButton></AddBookButton>
+            
             {books}
             </div>
         )

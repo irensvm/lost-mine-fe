@@ -3,7 +3,7 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Form } from 'react-bootstrap';
 import Rating from './Rating';
-import OpenMenu from '../OpenMenu';
+import NavBar from '../NavBar';
 
 export class AddBook extends Component {
   constructor(props) {
@@ -32,21 +32,18 @@ export class AddBook extends Component {
       rating: this.state.rating,
       owner: this.state.owner
     }
-    axios.post("http://localhost:3000/api/books/", body, { withCredentials: true }) // cambiar cuando funcione login
-      .then(response => {
-        // limpiar el formulario.
+    axios.post("http://localhost:3000/api/books/", body, { withCredentials: true }) 
+      .then(response => {       
         this.setState({
           title: '',
           opinion: '',
           genre: '',
           rating: '',
           lented:'',
-          owner:''
-
-        
+          owner:''        
         })
-        //this.props.updateData()
       })
+      //this.props.updateData()
 
   }
   handleChange = (e) => {
@@ -58,8 +55,8 @@ export class AddBook extends Component {
   render() {
     return (
       <div>
-      <OpenMenu></OpenMenu>
-        <Form action= "POST" onSubmit={this.handleSubmit} className="addbook" noValidate autoComplete="off" >
+      <NavBar></NavBar>
+        <Form variant="dark" action= "POST" onSubmit={this.handleSubmit} className="addbook" noValidate autoComplete="off" >
           <Form.Row >
             <Form.Group as={Col} controlId="formGridTitle">
               <Form.Label>Title</Form.Label>
@@ -102,9 +99,10 @@ export class AddBook extends Component {
           </Form.Group>
           <Form.Group controlId="formGridAddress1">
             <Form.Label>Owner</Form.Label>
-            <Form.Control placeholder="this book belong to..." name="owner"
-              defaultValue={this.state.owner}
-              onChange={this.handleChange} />
+            <Form.Control placeholder="this book belongs to..." name="owner" 
+              //defaultValue={this.state.owner}
+              onChange={this.handleChange}
+                />
           </Form.Group>
           <Rating onChange={this.handleChange}></Rating>
 

@@ -10,8 +10,8 @@ export default class EditProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: this.props.theUser.username,
-            favGenres: this.props.theUser.favGenres,
+            username: "",
+            favGenres: "",
         }
     }
     handleFormSubmit = (event) => {
@@ -45,6 +45,7 @@ export default class EditProfile extends Component {
                         <textarea
                             className="form-control"
                             name="username"
+                            defaultValue="we don't know yet"
                             value={this.state.username}
                             onChange={e => this.handleChange(e)} />
                     </div>
@@ -52,6 +53,7 @@ export default class EditProfile extends Component {
                         <label>Favourite genres:</label>
                         <textarea
                             className="form-control"
+                            defaultValue="we don't know yet"
                             name="favGenres"
                             value={this.state.favGenres}
                             onChange={e => this.handleChange(e)} />

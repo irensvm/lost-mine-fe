@@ -17,7 +17,7 @@ export default class FavButton extends Component {
     render() {
         return (
             <div>
-                <Button  onClick={this.handleClick} variant="light"><img style={{  width: "16px" }} alt="fav" src= "https://image.flaticon.com/icons/svg/1216/1216686.svg"></img></Button>
+                <Button  onClick={this.handleClick} variant="dark"><img style={{  width: "16px" }} alt="fav" src= "https://image.flaticon.com/icons/svg/1216/1216686.svg"></img></Button>
             </div>
         )
     }

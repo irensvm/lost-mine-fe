@@ -33,7 +33,7 @@ export default class App extends Component {
         <Switch>
           <Route exact path="/" render={() => <Home />} />
           <Route exact path="/books" render={() => <Books />} />
-          <Route path="/signup" render={(props) => <Signup {...props} callback={this.getTheUser} />} />
+          <AnonymousRoute path="/signup" render={(props) => <Signup  />} />
           <Route path="/login" render={(props) => <Login {...props} callback={this.getTheUser} />} />
           <Route exact path="/logout" render={(props) => <Logout {...props} callback={this.getTheUser} />}
           />
@@ -54,14 +54,11 @@ export default class App extends Component {
           />
           <ProtectedRoute
             path="/editprofile"
+            key={this.state.loggedInUser} 
             user={this.state.loggedInUser}
             component={EditProfile}
           />
-          <ProtectedRoute
-            path="/editbook"
-            user={this.state.loggedInUser}
-            component={EditBook}
-          />
+          
 
         </Switch>
 

@@ -20,13 +20,13 @@ export default class NavBar extends Component {
             console.log("Hay usuario logueado!", this.props.user)
             authLink = (
                 <li className="nav-item">
-                    <Nav.Link to="/logout" className="nav-link">Hola {this.props.user.email}, Logout</Nav.Link>
+                    <Nav.Link to="/logout" className="nav-link">Hola {this.props.user.email}</Nav.Link>
                 </li>
             )
         }
         return (
             <div>
-                <Navbar className="navbar" bg="light" variant="light">
+                <Navbar className="navbar" bg="light" variant="light" sticky="top" >
                     <Navbar.Brand href="/">Lost&Mine</Navbar.Brand>
                     <Nav className="mr-auto"></Nav>
                     <NavDropdown title="Menu" id="collasible-nav-dropdown">

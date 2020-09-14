@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardGroup } from 'react-bootstrap';
+import { Card, CardGroup, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FavButton from './FavButton'
@@ -40,19 +40,16 @@ export default class BookCard extends Component {
                 <CardGroup className='card-group' >
                     <Card text='dark' border="success" className="book-card" >
                         <Card.Img className="book-img" style={{ width: "50%" }} variant="top" src={this.image} alt="xxx" />
-                        <Card.Title>Title:{books.title}</Card.Title>
-                        <Card.Text>Review:            {books.opinion}
+                        <Card.Title className="card-text"> Title:{books.title}</Card.Title>
+                        <Card.Text className="card-text">Review:            {books.opinion}
                         </Card.Text>
-                        <Card.Text>Belongs to:            {books.owner}
+                        <Card.Text className="card-text">Belongs to:            {books.owner}
                         </Card.Text>
-                        <Card.Text>Lented to:            {books.lented}
+                        <Card.Text className="card-text">Lented to:            {books.lented}
                         </Card.Text>
-
                         <Card.Body>
-                            <FavButton></FavButton>
-
                         </Card.Body>
-                        <Card.Footer>
+                        <Card.Footer>                        
                             <small className="text-muted">Rating:</small> <Rating>{books.rating}</Rating>
                         </Card.Footer>
                     </Card>
