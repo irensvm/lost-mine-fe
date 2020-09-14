@@ -10,7 +10,7 @@ class Signup extends Component {
         super(props);
         this.state = { email: '', password: '' };
         this.service = new AuthService();
-        
+
     }
 
     handleFormSubmit = (event) => {
@@ -25,7 +25,8 @@ class Signup extends Component {
                     password: ""
                 });
                 this.props.callback(response)
-                window.location.href="/profile"
+                this.setState({redirect:true})
+
             })
             .catch(error => console.log(error))
     }
@@ -34,9 +35,16 @@ class Signup extends Component {
         const { name, value } = event.target;
         this.setState({ [name]: value });
     }
+
+    handleRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to="/profile" />
+        }
+    }
     render() {
         return (
             <div >
+            {this.handleRedirect()}
                 <NavBar></NavBar>
                 <Form className="signup" onSubmit={this.handleFormSubmit}>
                     <Form.Group controlId="formBasicEmail">
@@ -70,7 +78,7 @@ class Signup extends Component {
                     <Link to={"/login"}>Login!</Link>
                 </div>
 
-                
+
             </div>
         )
     }
