@@ -59,7 +59,11 @@ export class AddBook extends Component {
       return <Redirect to="/mybooks"/>
     }
   }
-
+  handleRating = (rating) => {
+    this.setState({
+        rating
+    })
+}
   render() {
 
 
@@ -117,7 +121,7 @@ export class AddBook extends Component {
               onChange={this.handleChange}
                 />
           </Form.Group>
-          <Rating onChange={this.handleChange}></Rating>
+          <Rating onChange={this.handleRating}></Rating>
 
           <input href= "/mybooks" type="submit"
             className="btn btn-primary"

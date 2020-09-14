@@ -28,7 +28,7 @@ export default class EditBook extends Component {
         const lented = this.state.lented;
         event.preventDefault();
         axios.put(`http://localhost:3000/api/books/${this.state._id}`, { lented, owner, rating, opinion }, { withCredentials: true })
-            .then(() => {                
+            .then(() => {
                 this.props.history.push('/mybooks');
             })
             .catch(error => console.log(error))
@@ -54,6 +54,11 @@ export default class EditBook extends Component {
     handleChangeLented = (event) => {
         this.setState({
             lented: event.target.value
+        })
+    }
+    handleRating = (rating) => {
+        this.setState({
+            rating
         })
     }
 
@@ -90,13 +95,13 @@ export default class EditBook extends Component {
                             value={this.state.lented}
                             onChange={e => this.handleChangeLented(e)} />
                     </div>
-                    <input  type="submit"
+                    <input type="submit"
                         className="btn btn-primary"
                         value="Save changes" />
 
                 </Form>
 
-                
+
 
             </div>
         )
