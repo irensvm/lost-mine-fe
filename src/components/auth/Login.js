@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import AuthService from '../../auth/auth-services';
 import NavBar from '../NavBar'
 import axios from 'axios'
@@ -22,6 +22,7 @@ export default class Login extends Component {
             .then(response => {
                 this.setState({ email: "", password: "" });
                 this.props.callback(response)
+                this.setState({redirect:true})
             })
             .catch(error => console.log(error))
     }
@@ -32,11 +33,18 @@ export default class Login extends Component {
             [name]: value
         });
     }
+    handleRedirect = () => {
+        if(this.state.redirect){
+          return <Redirect to="/profile"/>
+        }
+      }
 
 
     render() {
         return (
             <div className="container-fluid auth">
+            {this.handleRedirect()}
+
                 <NavBar></NavBar>
                 <h2>Login</h2>
                 <form onSubmit={this.handleFormSubmit} className="form-div">
