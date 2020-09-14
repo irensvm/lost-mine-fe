@@ -33,7 +33,7 @@ export default class App extends Component {
         <Switch>
           <Route exact path="/" render={() => <Home />} />
           <Route exact path="/books" render={() => <Books />} />
-          <Route exact path="/signup" render={(props) => <Signup  />} />
+          <Route exact path="/signup" render={(props) => <Signup  callback={this.getTheUser}/>} />
           <Route exact path="/login" render={(props) => <Login {...props} callback={this.getTheUser} />} />
           <Route exact path="/logout" render={(props) => <Logout {...props} callback={this.getTheUser} />}
           />

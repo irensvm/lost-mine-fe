@@ -25,7 +25,7 @@ class Signup extends Component {
                     password: ""
                 });
                 this.props.callback(response)
-
+                window.location.href="/profile"
             })
             .catch(error => console.log(error))
     }
