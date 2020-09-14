@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import BookCard from './BookCard'
 import OpenMenu from '../../components/OpenMenu'
 import NavBar from '../NavBar'
@@ -8,6 +8,7 @@ import { Card, Navbar, CardDeck, Button } from 'react-bootstrap';
 import AddBookButton from './AddBookButton'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FavButton from './FavButton'
+import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider'
 
 
 
@@ -30,20 +31,35 @@ export default class myBooks extends Component {
                 })
             })
     }
+
+    handleClick(book) {
+        this.setState({
+            redirect: true,
+            editbook:book
+        })
+    }
+
+    handleRedirect = () => {
+        if (this.state.redirect) {
+            console.log( "reditect:", this.state.editbook)
+            return <Redirect to={{pathname:"/editbook" , state:{editbook: this.state.editbook}}}/>
+            
+        }
+    }
     render() {
         const books = this.state.books.map(book => (
             <div key={book._id}>
                 <CardDeck>
-                <Card bg="dark" text='light' border="light" className="book-card" >
-                    <Card.Title>Title:{book.title}</Card.Title>
-                    <Card.Text>Review:{book.opinion}</Card.Text>                    
-                    <Card.Text>Lented to:{book.lented}</Card.Text>
-                    <Card.Footer>
-                        <small className="text-muted">Rating:</small> {book.rating}
-                        <FavButton></FavButton>
-                        <i class="far fa-edit"></i>
-                    </Card.Footer>
-                </Card>
+                    <Card bg="dark" text='light' border="light" className="book-card" >
+                        <Card.Title>Title:{book.title}</Card.Title>
+                        <Card.Text>Review:{book.opinion}</Card.Text>
+                        <Card.Text>Lented to:{book.lented}</Card.Text>
+                        <Card.Footer>
+                            <small className="text-muted">Rating:</small> {book.rating}
+                            <FavButton></FavButton>
+                            <Button onClick={()=>this.handleClick(book)}>edit</Button>
+                        </Card.Footer>
+                    </Card>
 
                 </CardDeck>
 
@@ -51,11 +67,12 @@ export default class myBooks extends Component {
         ))
         return (
             <div>
-            <NavBar>                
-            </NavBar>
-            <AddBookButton></AddBookButton>
-            
-            {books}
+                {this.handleRedirect()}
+                <NavBar>
+                </NavBar>
+                <AddBookButton></AddBookButton>
+
+                {books}
             </div>
         )
     }

@@ -9,12 +9,14 @@ import { Redirect } from 'react-router-dom';
 
 export default class EditBook extends Component {
     constructor(props) {
+        console.log(props)
         super(props);
         this.state = {
-            opinion: this.props.theBook.opinion,
-            rating: this.props.theBook.rating,
-            owner: this.props.theBook.owner,
-            lented: this.props.theBook.lented
+            _id: this.props.location.state.editbook._id,
+            opinion: this.props.location.state.editbook.opinion,
+            rating: this.props.location.state.editbook.rating,
+            owner: this.props.location.state.editbook.owner,
+            lented: this.props.location.state.editbook.lented
         }
     }
 
@@ -25,10 +27,8 @@ export default class EditBook extends Component {
         const owner = this.state.owner;
         const lented = this.state.lented;
         event.preventDefault();
-        axios.put(`http://localhost:3000/api/books/${this.props.theBook._id}`, { lented, owner, rating, opinion }, { withCredentials: true })
-            .then(() => {
-                this.props.getTheBook();
-                // after submitting the form, redirect to '/projects'
+        axios.put(`http://localhost:3000/api/books/${this.state._id}`, { lented, owner, rating, opinion }, { withCredentials: true })
+            .then(() => {                
                 this.props.history.push('/mybooks');
             })
             .catch(error => console.log(error))
@@ -96,7 +96,7 @@ export default class EditBook extends Component {
 
                 </Form>
 
-                <Redirect to={'/mybooks'} />
+                
 
             </div>
         )

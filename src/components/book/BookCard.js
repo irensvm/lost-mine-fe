@@ -48,7 +48,7 @@ export default class BookCard extends Component {
                         <Card.Text className="card-text">Lented to:            {books.lented}
                         </Card.Text>
                         <Card.Body>
-                        </Card.Body>
+                                                </Card.Body>
                         <Card.Footer>                        
                             <small className="text-muted">Rating:</small> <Rating>{books.rating}</Rating>
                         </Card.Footer>

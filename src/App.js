@@ -54,6 +54,11 @@ export default class App extends Component {
             component={AddBook}
           />
           <ProtectedRoute
+            path="/editbook"
+            user={this.state.loggedInUser}
+            component={EditBook}
+          />
+          <ProtectedRoute
             path="/editprofile"
             key={this.state.loggedInUser} 
             user={this.state.loggedInUser}
