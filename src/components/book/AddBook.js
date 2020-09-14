@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Form } from 'react-bootstrap';
 import Rating from './Rating';
 import NavBar from '../NavBar';
+import { Redirect } from 'react-router-dom';
 
 export class AddBook extends Component {
   constructor(props) {
@@ -42,6 +43,7 @@ export class AddBook extends Component {
           lented:'',
           owner:''        
         })
+        this.setState({redirect:true})
       })
       //this.props.updateData()
 
@@ -52,10 +54,21 @@ export class AddBook extends Component {
     })
   }
 
+  handleRedirect = () => {
+    if(this.state.redirect){
+      return <Redirect to="/mybooks"/>
+    }
+  }
+
   render() {
+
+
+
     return (
       <div>
+      {this.handleRedirect()}
       <NavBar></NavBar>
+
         <Form variant="dark" action= "POST" onSubmit={this.handleSubmit} className="addbook" noValidate autoComplete="off" >
           <Form.Row >
             <Form.Group as={Col} controlId="formGridTitle">
