@@ -3,13 +3,23 @@ import { FaStar } from 'react-icons/fa'
 
 export default function Rating(props) {
     const handleClick = (rating) => {
+        if(props.disabled){
+            return
+        }
         props.onChange(rating)
         setRating(rating)
+        
     }
-   
-    const [rating, setRating] = useState(null)
-    const [hover, setHover] = useState(null)
+    const handleHover = (rating) => {
+        if(props.disabled){
+            return
+        }
+        setHover(rating)
+    }
     
+    const [rating, setRating] = useState(props.rating)
+    const [hover, setHover] = useState(null)
+
 
     return (
         <div>
@@ -21,9 +31,10 @@ export default function Rating(props) {
                             key={ratingValue}
                             className="star"
                             color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
-                            onMouseEnter={() => setHover(ratingValue)}
-                            onMouseLeave={() => setHover(null)}
+                            onMouseEnter={() => handleHover(ratingValue)}
+                            onMouseLeave={() => handleHover(null)}
                             onClick={() => handleClick(ratingValue)}
+                            
                         ></FaStar>
 
                     </>

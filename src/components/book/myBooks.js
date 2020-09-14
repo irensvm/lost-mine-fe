@@ -9,7 +9,7 @@ import AddBookButton from './AddBookButton'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FavButton from './FavButton'
 import { ThemeConsumer } from 'react-bootstrap/esm/ThemeProvider'
-
+import Rating from './Rating'
 
 
 export default class myBooks extends Component {
@@ -55,7 +55,8 @@ export default class myBooks extends Component {
                         <Card.Text>Review:{book.opinion}</Card.Text>
                         <Card.Text>Lented to:{book.lented}</Card.Text>
                         <Card.Footer>
-                            <small className="text-muted">Rating:</small> {book.rating}
+                            <small className="text-muted">Rating:<Rating disabled="true" rating={book.rating} ></Rating></small> 
+                            
                             <FavButton></FavButton>
                             <Button onClick={()=>this.handleClick(book)}>edit</Button>
                         </Card.Footer>
