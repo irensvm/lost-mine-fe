@@ -17,7 +17,7 @@ export default class BookList extends Component {
         this.getAllBooks()
     }
     getAllBooks() {
-        axios.get("http://localhost:3000/api/books/")
+        axios.get(`${process.env.REACT_APP_API_URL}/books`)
             .then(response => {
                 this.setState({
                     books: response.data
@@ -29,18 +29,18 @@ export default class BookList extends Component {
         const books = this.state.books.map(book => (
             <div key={book._id}>
                 <Card text='dark' border="success" className="book-card" >
-                        <Card.Img className="book-img" style={{ width: "50%" }} variant="top" src={this.image} alt="xxx" />
-                        <Card.Title>Title:{book.title}</Card.Title>
-                        <Card.Text>Review:            {book.opinion}
-                        </Card.Text>
-                        <Card.Text>Belongs to:            {book.owner}
-                        </Card.Text>
-                        <Card.Text>Lented to:            {book.lented}
-                        </Card.Text>                                            
-                        <Card.Footer>
-                            <small className="text-muted">Rating:</small> {book.rating}
-                        </Card.Footer>
-                    </Card>
+                    <Card.Img className="book-img" style={{ width: "50%" }} variant="top" src={this.image} alt="xxx" />
+                    <Card.Title>Title:{book.title}</Card.Title>
+                    <Card.Text>Review:            {book.opinion}
+                    </Card.Text>
+                    <Card.Text>Belongs to:            {book.owner}
+                    </Card.Text>
+                    <Card.Text>Lented to:            {book.lented}
+                    </Card.Text>
+                    <Card.Footer>
+                        <small className="text-muted">Rating:</small> {book.rating}
+                    </Card.Footer>
+                </Card>
             </div>
         ))
 

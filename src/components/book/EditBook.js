@@ -27,7 +27,7 @@ export default class EditBook extends Component {
         const owner = this.state.owner;
         const lented = this.state.lented;
         event.preventDefault();
-        axios.put(`http://localhost:3000/api/books/${this.state._id}`, { lented, owner, rating, opinion }, { withCredentials: true })
+        axios.put(`${process.env.REACT_APP_API_URL}/books/${this.state._id}`, { lented, owner, rating, opinion }, { withCredentials: true })
             .then(() => {
                 this.props.history.push('/mybooks');
             })

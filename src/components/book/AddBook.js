@@ -33,7 +33,7 @@ export class AddBook extends Component {
       rating: this.state.rating,
       owner: this.state.owner
     }
-    axios.post("http://localhost:3000/api/books/", body, { withCredentials: true })
+    axios.post(`${process.env.REACT_APP_API_URL}/books/`, body, { withCredentials: true })
       .then(response => {
         this.setState({
           title: '',

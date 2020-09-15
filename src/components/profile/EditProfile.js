@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Redirect } from 'react-router-dom';
 
 
 
@@ -20,11 +19,10 @@ export default class EditProfile extends Component {
 
         event.preventDefault();
 
-        axios.put(`http://localhost:3000/api/projects/${this.props.theUser._id}`, { username, favGenres }, { withCredentials: true })
+        axios.put(`${process.env.REACT_APP_API_URL}/users/${this.props.theUser._id}`, { username, favGenres }, { withCredentials: true })
             .then(() => {
                 this.props.getTheUser();
-                // after submitting the form, redirect to '/projects'
-                //this.props.history.push('/pr');
+                this.props.history.push('/profile');
             })
             .catch(error => console.log(error))
     }
@@ -65,7 +63,7 @@ export default class EditProfile extends Component {
                         value="Save changes" />
 
                 </Form>
-                <Redirect to={'/profile'} />
+                
 
             </div>
         )

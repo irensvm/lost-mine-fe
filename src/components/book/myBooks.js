@@ -24,7 +24,7 @@ export default class myBooks extends Component {
         this.getAllBooks()
     }
     getAllBooks() {
-        axios.get("http://localhost:3000/api/books/")
+        axios.get(`${process.env.REACT_APP_API_URL}/books/`)
             .then(response => {
                 this.setState({
                     books: response.data
