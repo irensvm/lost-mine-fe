@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Link, Redirect } from 'react-router-dom'
 import BookCard from './BookCard'
 import OpenMenu from '../../components/OpenMenu'
-import NavBar from '../NavBar'
+import NavBar from '../Navbar'
 import { Card, Navbar, CardDeck, Button } from 'react-bootstrap';
 import AddBookButton from './AddBookButton'
 import 'bootstrap/dist/css/bootstrap.min.css';

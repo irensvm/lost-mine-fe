@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import OpenMenu from '../OpenMenu'
 import MyBooks from '../book/myBooks'
 import BookList from '../book/BookList'
-import NavBar from '../NavBar'
+import NavBar from '../Navbar'
 import { Button } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
 

@@ -3,7 +3,7 @@ import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Form } from 'react-bootstrap';
 import Rating from './Rating';
-import NavBar from '../NavBar';
+import NavBar from '../Navbar';
 import { Redirect } from 'react-router-dom';
 
 export class AddBook extends Component {

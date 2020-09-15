@@ -3,7 +3,7 @@ import AuthService from '../../auth/auth-services';
 import { Link, Redirect } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavBar from '../NavBar'
+import NavBar from '../Navbar'
 
 class Signup extends Component {
     constructor(props) {

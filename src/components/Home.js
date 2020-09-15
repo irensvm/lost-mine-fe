@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import NavBar from './NavBar';
+import NavBar from './Navbar';
 import Books from '../components/book/Books';
 
 import { Link } from 'react-router-dom';

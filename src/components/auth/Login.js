@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import AuthService from '../../auth/auth-services';
-import NavBar from '../NavBar'
+import NavBar from '../Navbar'
 import axios from 'axios'
 import { Button } from '@material-ui/core';
 
