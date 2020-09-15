@@ -9,14 +9,14 @@ import { Redirect } from 'react-router-dom';
 export class AddBook extends Component {
   constructor(props) {
     super(props)
-    
+
     this.state = {
       title: '',
       opinion: '',
       genre: '',
       owner: '',
-      rating:'',
-      lented:'',
+      rating: '',
+      lented: '',
       loggedInUser: this.props.user,
 
     }
@@ -33,19 +33,18 @@ export class AddBook extends Component {
       rating: this.state.rating,
       owner: this.state.owner
     }
-    axios.post("http://localhost:3000/api/books/", body, { withCredentials: true }) 
-      .then(response => {       
+    axios.post("http://localhost:3000/api/books/", body, { withCredentials: true })
+      .then(response => {
         this.setState({
           title: '',
           opinion: '',
           genre: '',
           rating: '',
-          lented:'',
-          owner:''        
+          lented: '',
+          owner: ''
         })
-        this.setState({redirect:true})
+        this.setState({ redirect: true })
       })
-      //this.props.updateData()
 
   }
   handleChange = (e) => {
@@ -55,25 +54,22 @@ export class AddBook extends Component {
   }
 
   handleRedirect = () => {
-    if(this.state.redirect){
-      return <Redirect to="/mybooks"/>
+    if (this.state.redirect) {
+      return <Redirect to="/mybooks" />
     }
   }
   handleRating = (rating) => {
     this.setState({
-        rating
+      rating
     })
-}
+  }
   render() {
-
-
-
     return (
-      <div>
-      {this.handleRedirect()}
-      <NavBar></NavBar>
+      <div >
+        {this.handleRedirect()}
+        <NavBar></NavBar>
 
-        <Form variant="dark" action= "POST" onSubmit={this.handleSubmit} className="addbook" noValidate autoComplete="off" >
+        <Form action="POST" onSubmit={this.handleSubmit} className="addbook" noValidate autoComplete="off" >
           <Form.Row >
             <Form.Group as={Col} controlId="formGridTitle">
               <Form.Label>Title</Form.Label>
@@ -116,23 +112,21 @@ export class AddBook extends Component {
           </Form.Group>
           <Form.Group controlId="formGridAddress1">
             <Form.Label>Owner</Form.Label>
-            <Form.Control placeholder="this book belongs to..." name="owner" 
+            <Form.Control placeholder="this book belongs to..." name="owner"
               //defaultValue={this.state.owner}
               onChange={this.handleChange}
-                />
+            />
           </Form.Group>
+          <></>
           <Rating onChange={this.handleRating}></Rating>
 
-          <input href= "/mybooks" type="submit"
-            className="btn btn-primary"
+          <input href="/mybooks" type="submit"
+            className="btn btn-dark"
             value="Add book" />
 
         </Form>
 
       </div>
-
-
-
     )
 
   }

@@ -56,9 +56,9 @@ export default class myBooks extends Component {
                         <Card.Text>Lented to:{book.lented}</Card.Text>
                         <Card.Footer>
                             <small className="text-muted">Rating:<Rating disabled="true" rating={book.rating} ></Rating></small> 
-                            
+                            <></>
                             <FavButton></FavButton>
-                            <Button onClick={()=>this.handleClick(book)}>edit</Button>
+                            <Button  variant="dark" text='light' border="light" onClick={()=>this.handleClick(book)}>Edit</Button>
                         </Card.Footer>
                     </Card>
 

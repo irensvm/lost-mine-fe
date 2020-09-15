@@ -52,9 +52,7 @@ code {
     background: #1669F2; }
 
   
-.book-img{
-  width: 50%;
-}
+
 .star {
   cursor: pointer;
   transition: color 20ms;
@@ -62,9 +60,16 @@ code {
 input[type="radio"] {
   display: "none";
 }
+.book-card{
+  margin: 0px;
+  width: 100%;
+}
 .card-text{
+  color: rgb(243, 238, 238);
   text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     margin: 10px;
+    
 }
+

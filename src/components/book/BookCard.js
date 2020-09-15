@@ -38,7 +38,7 @@ export default class BookCard extends Component {
         return (
             <div>
                 <CardGroup className='card-group' >
-                    <Card text='dark' border="success" className="book-card" >
+                    <Card text='loght' border="success" className="book-card" >
                         <Card.Img className="book-img" style={{ width: "50%" }} variant="top" src={this.image} alt="xxx" />
                         <Card.Title className="card-text"> Title:{books.title}</Card.Title>
                         <Card.Text className="card-text">Review:            {books.opinion}
