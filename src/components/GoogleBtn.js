@@ -7,6 +7,7 @@ const CLIENT_ID =
 class GoogleBtn extends Component {
   constructor(props) {
     super(props);
+    //PENDient
 
     this.state = {
       isLogined: false,
@@ -55,15 +56,15 @@ class GoogleBtn extends Component {
             onFailure={this.handleLogoutFailure}
           ></GoogleLogout>
         ) : (
-          <GoogleLogin
-            clientId={CLIENT_ID}
-            buttonText="Login"
-            onSuccess={this.login}
-            onFailure={this.handleLoginFailure}
-            cookiePolicy={"single_host_origin"}
-            responseType="code,token"
-          />
-        )}
+            <GoogleLogin
+              clientId={CLIENT_ID}
+              buttonText="Login"
+              onSuccess={this.login}
+              onFailure={this.handleLoginFailure}
+              cookiePolicy={"single_host_origin"}
+              responseType="code,token"
+            />
+          )}
         {this.state.accessToken ? (
           <h5>
             Your Access Token: <br />

@@ -13,12 +13,7 @@ export default function BookCard(props) {
       <CardDeck className="card m-2 wid">
         <Card bg="dark" text="light" border="light" className="book-card">
           <Card.Img
-            style={{
-              width: "auto",
-              height: "auto",
-              maxHeight: "90%",
-              maxWidth: "100%",
-            }}
+            style={{ width: "50%" }}
             variant="top"
             src={props.image}
             alt="book.img"
