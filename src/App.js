@@ -16,8 +16,9 @@ import Books from "./components/book/Books";
 export default class App extends Component {
   constructor(props) {
     super(props);
+    const user = localStorage.getItem("loggedInUser");
     this.state = {
-      loggedInUser: JSON.parse(localStorage.getItem("loggedInUser")) || null,
+      loggedInUser: user ? JSON.parse(user) : null,
     };
   }
   getTheUser = (userObject) => {
