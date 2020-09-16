@@ -24,7 +24,8 @@
     "superagent": "^6.1.0"
   },
   "scripts": {
-    "deploy": "npm run build && rm -rf ../lost-mine-be/public && mkdir -p ../lost-mine-be/public && cp -r build/** ../lost-mine-be/public",    
+    "start": "react-scripts start",
+    "deploy": "npm run build && rm -rf ../lost-mine-be/public && mkdir -p ../lost-mine-be/public && cp -r build/** ../lost-mine-be/public",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
