@@ -1,17 +1,16 @@
-import React, { Component } from 'react'
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import React, { Component } from "react";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
 
-
-const CLIENT_ID = '547387085171-r56rt3kjvftq9l34p0p5hejppq1oi1mq.apps.googleusercontent.com';
-
+const CLIENT_ID =
+  "547387085171-r56rt3kjvftq9l34p0p5hejppq1oi1mq.apps.googleusercontent.com";
 
 class GoogleBtn extends Component {
-   constructor(props) {
+  constructor(props) {
     super(props);
 
     this.state = {
       isLogined: false,
-      accessToken: ''
+      accessToken: "",
     };
 
     this.login = this.login.bind(this);
@@ -20,54 +19,59 @@ class GoogleBtn extends Component {
     this.handleLogoutFailure = this.handleLogoutFailure.bind(this);
   }
 
-  login (response) {
-    if(response.accessToken){
-      this.setState(state => ({
+  login(response) {
+    if (response.accessToken) {
+      this.setState((state) => ({
         isLogined: true,
-        accessToken: response.accessToken
+        accessToken: response.accessToken,
       }));
     }
-    console.log(response)
+    console.log(response);
   }
 
-  logout (response) {
-    this.setState(state => ({
+  logout(response) {
+    this.setState((state) => ({
       isLogined: false,
-      accessToken: ''
+      accessToken: "",
     }));
   }
 
-  handleLoginFailure (response) {
-    alert('Failed to log in')
+  handleLoginFailure(response) {
+    alert("Failed to log in");
   }
 
-  handleLogoutFailure (response) {
-    alert('Failed to log out')
+  handleLogoutFailure(response) {
+    alert("Failed to log out");
   }
 
   render() {
     return (
-    <div>
-      { this.state.isLogined ?
-        <GoogleLogout
-          clientId={ CLIENT_ID }
-          buttonText='Logout'
-          onLogoutSuccess={ this.logout }
-          onFailure={ this.handleLogoutFailure }
-        >
-        </GoogleLogout>: <GoogleLogin
-          clientId={CLIENT_ID}
-          buttonText='Login'
-          onSuccess={ this.login }
-          onFailure={ this.handleLoginFailure }
-          cookiePolicy={ 'single_host_origin' }
-          responseType='code,token'
-        />
-      }
-      { this.state.accessToken ? <h5>Your Access Token: <br/><br/> { this.state.accessToken }</h5> : null }
-
-    </div>
-    )
+      <div>
+        {this.state.isLogined ? (
+          <GoogleLogout
+            clientId={CLIENT_ID}
+            buttonText="Logout"
+            onLogoutSuccess={this.logout}
+            onFailure={this.handleLogoutFailure}
+          ></GoogleLogout>
+        ) : (
+          <GoogleLogin
+            clientId={CLIENT_ID}
+            buttonText="Login"
+            onSuccess={this.login}
+            onFailure={this.handleLoginFailure}
+            cookiePolicy={"single_host_origin"}
+            responseType="code,token"
+          />
+        )}
+        {this.state.accessToken ? (
+          <h5>
+            Your Access Token: <br />
+            <br /> {this.state.accessToken}
+          </h5>
+        ) : null}
+      </div>
+    );
   }
 }
 
